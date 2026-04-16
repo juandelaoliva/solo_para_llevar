@@ -113,7 +113,7 @@
 
     /* ─── Reset ──────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 17px; }
+    html { scroll-behavior: smooth; font-size: 17px; background-color: var(--brown); }
     body {
       font-family: var(--font-body);
       background-color: var(--cream);
@@ -145,16 +145,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding-top: constant(safe-area-inset-top);
       padding-top: env(safe-area-inset-top, 0px);
-      padding-right: max(var(--space-md), env(safe-area-inset-right, 0px));
+      padding-right: var(--space-md);
       padding-bottom: 0;
-      padding-left: max(var(--space-md), env(safe-area-inset-left, 0px));
+      padding-left: var(--space-md);
+      min-height: calc(64px + constant(safe-area-inset-top));
       min-height: calc(64px + env(safe-area-inset-top, 0px));
       border-bottom: 3px solid var(--gold);
       box-shadow: 0 2px 20px rgba(58,40,20,0.25);
     }
     /* Spacer to push content below the fixed nav */
     .nav-spacer {
+      height: calc(64px + constant(safe-area-inset-top) + 3px);
       height: calc(64px + env(safe-area-inset-top, 0px) + 3px);
     }
     .nav-brand {
@@ -1437,6 +1440,7 @@
 
     .nav-drawer {
       position: fixed;
+      top: calc(64px + constant(safe-area-inset-top) + 3px);
       top: calc(64px + env(safe-area-inset-top, 0px) + 3px);
       left: 0;
       right: 0;

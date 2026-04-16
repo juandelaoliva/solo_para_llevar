@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Solo Para Llevar — Comida Casera para Llevar · Los Bermejales, Sevilla</title>
 
   <!-- ─── SEO: Primary meta ─────────────────────────────────── -->
@@ -135,31 +135,27 @@
     }
 
     /* ─── Navigation ─────────────────────────────────────────── */
-    /* Fixed bar covering iOS safe area (notch/Dynamic Island) */
-    .ios-status-bar {
+    .nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      height: env(safe-area-inset-top, 0px);
-      background-color: var(--brown);
-      z-index: 101;
-    }
-    .nav {
-      position: sticky;
-      top: 0;
       z-index: 100;
       background-color: var(--brown);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-top: env(safe-area-inset-top, 0px);
-      padding-right: var(--space-md);
+      padding-right: max(var(--space-md), env(safe-area-inset-right, 0px));
       padding-bottom: 0;
-      padding-left: var(--space-md);
-      min-height: 64px;
+      padding-left: max(var(--space-md), env(safe-area-inset-left, 0px));
+      min-height: calc(64px + env(safe-area-inset-top, 0px));
       border-bottom: 3px solid var(--gold);
       box-shadow: 0 2px 20px rgba(58,40,20,0.25);
+    }
+    /* Spacer to push content below the fixed nav */
+    .nav-spacer {
+      height: calc(64px + env(safe-area-inset-top, 0px) + 3px);
     }
     .nav-brand {
       display: flex;
@@ -219,7 +215,7 @@
     /* ─── Hero ───────────────────────────────────────────────── */
     .hero {
       position: relative;
-      min-height: calc(100vh - 64px - env(safe-area-inset-top, 0px));
+      min-height: calc(100vh - 64px - env(safe-area-inset-top, 0px) - 3px);
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -1441,7 +1437,7 @@
 
     .nav-drawer {
       position: fixed;
-      top: calc(64px + env(safe-area-inset-top, 0px));
+      top: calc(64px + env(safe-area-inset-top, 0px) + 3px);
       left: 0;
       right: 0;
       background-color: var(--brown);
@@ -1583,9 +1579,6 @@
 </head>
 <body>
 
-  <!-- iOS safe area fill (notch/Dynamic Island) -->
-  <div class="ios-status-bar" aria-hidden="true"></div>
-
   <!-- ─── Navigation ─────────────────────────────────────────── -->
   <nav class="nav">
     <a href="#" class="nav-brand">
@@ -1608,6 +1601,7 @@
       <span></span>
     </button>
   </nav>
+  <div class="nav-spacer"></div>
 
   <!-- ─── Mobile drawer ────────────────────────────────────────── -->
   <div class="nav-drawer" id="navDrawer" role="navigation" aria-label="Menú móvil">

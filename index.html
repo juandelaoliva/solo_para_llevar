@@ -18,6 +18,7 @@
   <meta name="ICBM" content="37.3641, -5.9875" />
 
   <!-- ─── SEO: Favicon ─────────────────────────────────────── -->
+  <meta name="theme-color" content="#614126" />
   <link rel="icon" type="image/png" href="brand_assets/solo_para_llevar-logo.png" />
   <link rel="apple-touch-icon" href="brand_assets/solo_para_llevar-logo.png" />
 
@@ -136,10 +137,8 @@
 
     /* ─── Navigation ─────────────────────────────────────────── */
     .nav {
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
       z-index: 100;
       background-color: var(--brown);
       display: flex;
@@ -149,10 +148,7 @@
       height: 67px;
       border-bottom: 3px solid var(--gold);
       box-shadow: 0 2px 20px rgba(58,40,20,0.25);
-    }
-    /* Spacer to push content below the fixed nav */
-    .nav-spacer {
-      height: 67px;
+      transform: translateZ(0);
     }
     .nav-brand {
       display: flex;
@@ -1435,7 +1431,7 @@
 
     .nav-drawer {
       position: fixed;
-      top: 67px;
+      top: 70px;
       left: 0;
       right: 0;
       background-color: var(--brown);
@@ -1599,7 +1595,6 @@
       <span></span>
     </button>
   </nav>
-  <div class="nav-spacer"></div>
 
   <!-- ─── Mobile drawer ────────────────────────────────────────── -->
   <div class="nav-drawer" id="navDrawer" role="navigation" aria-label="Menú móvil">

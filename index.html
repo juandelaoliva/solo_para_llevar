@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Solo Para Llevar — Comida Casera para Llevar · Los Bermejales, Sevilla</title>
 
   <!-- ─── SEO: Primary meta ─────────────────────────────────── -->
@@ -113,7 +113,7 @@
 
     /* ─── Reset ──────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 17px; background-color: var(--brown); }
+    html { scroll-behavior: smooth; font-size: 17px; scroll-padding-top: 72px; }
     body {
       font-family: var(--font-body);
       background-color: var(--cream);
@@ -145,20 +145,14 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: constant(safe-area-inset-top);
-      padding-top: env(safe-area-inset-top, 0px);
-      padding-right: var(--space-md);
-      padding-bottom: 0;
-      padding-left: var(--space-md);
-      min-height: calc(64px + constant(safe-area-inset-top));
-      min-height: calc(64px + env(safe-area-inset-top, 0px));
+      padding: 0 var(--space-md);
+      height: 67px;
       border-bottom: 3px solid var(--gold);
       box-shadow: 0 2px 20px rgba(58,40,20,0.25);
     }
     /* Spacer to push content below the fixed nav */
     .nav-spacer {
-      height: calc(64px + constant(safe-area-inset-top) + 3px);
-      height: calc(64px + env(safe-area-inset-top, 0px) + 3px);
+      height: 67px;
     }
     .nav-brand {
       display: flex;
@@ -218,7 +212,8 @@
     /* ─── Hero ───────────────────────────────────────────────── */
     .hero {
       position: relative;
-      min-height: calc(100vh - 64px - env(safe-area-inset-top, 0px) - 3px);
+      min-height: calc(100vh - 67px);
+      min-height: calc(100svh - 67px);
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -1440,8 +1435,7 @@
 
     .nav-drawer {
       position: fixed;
-      top: calc(64px + constant(safe-area-inset-top) + 3px);
-      top: calc(64px + env(safe-area-inset-top, 0px) + 3px);
+      top: 67px;
       left: 0;
       right: 0;
       background-color: var(--brown);

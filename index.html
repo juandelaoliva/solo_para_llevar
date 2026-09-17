@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Solo Para Llevar — Comida Casera para Llevar · Los Bermejales, Sevilla</title>
 
   <!-- ─── SEO: Primary meta ─────────────────────────────────── -->
@@ -117,15 +117,15 @@
     html {
       scroll-behavior: smooth;
       font-size: 17px;
-      scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px));
-      /* en <html> (no en <body>) para no romper position:sticky en iOS Safari */
+      scroll-padding-top: 82px;
       overflow-x: hidden;
-      background-color: var(--brown);
     }
     body {
       font-family: var(--font-body);
       background-color: var(--cream);
       color: var(--ink);
+      /* el nav es position:fixed (fuera del flujo) → reservamos su altura */
+      padding-top: 70px;
     }
     img { display: block; max-width: 100%; }
     a { text-decoration: none; color: inherit; }
@@ -143,19 +143,19 @@
 
     /* ─── Navigation ─────────────────────────────────────────── */
     .nav {
-      position: sticky;
+      /* fixed (no sticky): en iOS Safari sticky se ancla al layout viewport y deja
+         un hueco bajo la status bar / isla dinámica al colapsarse la barra del navegador */
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       background-color: var(--brown);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      /* El fondo marrón se extiende bajo la status bar de iOS (notch / Dynamic Island) */
-      padding: env(safe-area-inset-top, 0px)
-               max(var(--space-md), env(safe-area-inset-right, 0px))
-               0
-               max(var(--space-md), env(safe-area-inset-left, 0px));
-      height: calc(67px + env(safe-area-inset-top, 0px));
+      padding: 0 var(--space-md);
+      height: 67px;
       border-bottom: 3px solid var(--gold);
       box-shadow: 0 2px 20px rgba(58,40,20,0.25);
     }
@@ -217,8 +217,8 @@
     /* ─── Hero ───────────────────────────────────────────────── */
     .hero {
       position: relative;
-      min-height: calc(100vh - 67px - env(safe-area-inset-top, 0px));
-      min-height: calc(100svh - 67px - env(safe-area-inset-top, 0px));
+      min-height: calc(100vh - 70px);
+      min-height: calc(100svh - 70px);
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -1323,10 +1323,7 @@
     footer {
       background-color: var(--ink);
       color: rgba(245,239,221,0.6);
-      padding: var(--space-lg)
-               max(var(--space-md), env(safe-area-inset-right, 0px))
-               calc(var(--space-md) + env(safe-area-inset-bottom, 0px))
-               max(var(--space-md), env(safe-area-inset-left, 0px));
+      padding: var(--space-lg) var(--space-md) var(--space-md);
     }
     .footer-inner {
       max-width: 1200px;
@@ -1443,7 +1440,7 @@
 
     .nav-drawer {
       position: fixed;
-      top: calc(70px + env(safe-area-inset-top, 0px));
+      top: 70px;
       left: 0;
       right: 0;
       background-color: var(--brown);
@@ -1482,8 +1479,8 @@
     /* ─── Floating WhatsApp button ───────────────────────────── */
     .whatsapp-float {
       position: fixed;
-      bottom: calc(28px + env(safe-area-inset-bottom, 0px));
-      right: calc(28px + env(safe-area-inset-right, 0px));
+      bottom: 28px;
+      right: 28px;
       z-index: 200;
       width: 58px;
       height: 58px;

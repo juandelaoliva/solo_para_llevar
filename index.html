@@ -122,6 +122,10 @@
       /* Canvas del color del nav: es lo que Safari iOS muestra tras la status bar
          a scroll 0 y lo que asoma al hacer overscroll por arriba. */
       background-color: var(--brown);
+      /* PRUEBA 2 (solo si la 1 no basta): descomentar la línea siguiente.
+         Es visualmente idéntico, pero hace que el muestreador de color de Safari
+         descarte la zona (background-image) y pinte su fallback opaco. */
+      /* background-image: linear-gradient(var(--brown), var(--brown)); */
     }
     body {
       font-family: var(--font-body);
@@ -154,7 +158,16 @@
       /* fixed (no sticky): en iOS Safari sticky se ancla al layout viewport y deja
          un hueco bajo la status bar / isla dinámica al colapsarse la barra del navegador */
       position: fixed;
-      top: 0;
+      /* PRUEBA 1 — El nav se extiende por ENCIMA del viewport.
+         En Safari iOS (barra abajo) la franja de la status bar es chrome de Safari:
+         viewport-fit=cover no la alcanza y env(safe-area-inset-top) vale 0. Pero el
+         web view sí se extiende por debajo de ella y los position:fixed no se recortan
+         al viewport, así que si el nav sobresale --sb px por arriba, lo que Safari ve
+         bajo su material es siempre este marrón, haya scroll o no.
+         64px > cualquier status bar iOS (44–59pt). En escritorio, Android y landscape
+         ese exceso queda fuera de pantalla y no cambia nada. */
+      --sb: 64px;
+      top: calc(-1 * var(--sb));
       left: 0;
       right: 0;
       z-index: 100;
@@ -162,17 +175,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      /* Con viewport-fit=cover el viewport llega al borde físico de la pantalla y
-         env(safe-area-inset-top) mide la franja de la status bar / isla dinámica:
-         el nav se extiende por debajo y la cubre de forma opaca.
-         Los laterales cubren el notch en landscape. */
-      padding-top: env(safe-area-inset-top, 0px);
+      padding-top: calc(var(--sb) + env(safe-area-inset-top, 0px));
       padding-right: max(var(--space-md), env(safe-area-inset-right, 0px));
       padding-bottom: 0;
       padding-left: max(var(--space-md), env(safe-area-inset-left, 0px));
-      /* box-sizing: border-box → 67px de contenido + 3px de borde = 70px,
-         igual que el padding-top de body (antes medía 67px en total y asomaban 3px). */
-      height: calc(70px + env(safe-area-inset-top, 0px));
+      /* box-sizing: border-box → --sb + 67px de contenido + 3px de borde;
+         el borde inferior sigue cayendo en 70px (+ inset), igual que el padding-top de body. */
+      height: calc(70px + var(--sb) + env(safe-area-inset-top, 0px));
       border-bottom: 3px solid var(--gold);
       box-shadow: 0 2px 20px rgba(58,40,20,0.25);
     }

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Solo Para Llevar — Comida Casera para Llevar · Los Bermejales, Sevilla</title>
 
   <!-- ─── SEO: Primary meta ─────────────────────────────────── -->
@@ -117,15 +117,23 @@
     html {
       scroll-behavior: smooth;
       font-size: 17px;
-      scroll-padding-top: 82px;
+      scroll-padding-top: calc(82px + env(safe-area-inset-top, 0px));
       overflow-x: hidden;
+      /* Canvas del color del nav: es lo que Safari iOS muestra tras la status bar
+         a scroll 0 y lo que asoma al hacer overscroll por arriba. */
+      background-color: var(--brown);
     }
     body {
       font-family: var(--font-body);
       background-color: var(--cream);
+      /* El padding-top (bajo el nav) queda transparente y deja ver el marrón de html,
+         así no asoma una franja crema entre nav y hero al hacer overscroll. */
+      background-clip: content-box;
       color: var(--ink);
-      /* el nav es position:fixed (fuera del flujo) → reservamos su altura */
-      padding-top: 70px;
+      /* el nav es position:fixed (fuera del flujo) → reservamos su altura (70px)
+         + la franja de la status bar / isla dinámica (viewport-fit=cover).
+         En escritorio y Android env() vale 0 y no cambia nada. */
+      padding-top: calc(70px + env(safe-area-inset-top, 0px));
     }
     img { display: block; max-width: 100%; }
     a { text-decoration: none; color: inherit; }
@@ -154,8 +162,17 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 var(--space-md);
-      height: 67px;
+      /* Con viewport-fit=cover el viewport llega al borde físico de la pantalla y
+         env(safe-area-inset-top) mide la franja de la status bar / isla dinámica:
+         el nav se extiende por debajo y la cubre de forma opaca.
+         Los laterales cubren el notch en landscape. */
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-right: max(var(--space-md), env(safe-area-inset-right, 0px));
+      padding-bottom: 0;
+      padding-left: max(var(--space-md), env(safe-area-inset-left, 0px));
+      /* box-sizing: border-box → 67px de contenido + 3px de borde = 70px,
+         igual que el padding-top de body (antes medía 67px en total y asomaban 3px). */
+      height: calc(70px + env(safe-area-inset-top, 0px));
       border-bottom: 3px solid var(--gold);
       box-shadow: 0 2px 20px rgba(58,40,20,0.25);
     }
@@ -217,8 +234,8 @@
     /* ─── Hero ───────────────────────────────────────────────── */
     .hero {
       position: relative;
-      min-height: calc(100vh - 70px);
-      min-height: calc(100svh - 70px);
+      min-height: calc(100vh - 70px - env(safe-area-inset-top, 0px));
+      min-height: calc(100svh - 70px - env(safe-area-inset-top, 0px));
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -1440,7 +1457,8 @@
 
     .nav-drawer {
       position: fixed;
-      top: 70px;
+      /* justo debajo del nav (70px + franja de la status bar) */
+      top: calc(70px + env(safe-area-inset-top, 0px));
       left: 0;
       right: 0;
       background-color: var(--brown);
@@ -1459,7 +1477,7 @@
     }
     .nav-drawer-links {
       list-style: none;
-      padding: 8px var(--space-md) 16px;
+      padding: 8px max(var(--space-md), env(safe-area-inset-right, 0px)) 16px max(var(--space-md), env(safe-area-inset-left, 0px));
     }
     .nav-drawer-links li { border-bottom: 1px solid rgba(245,239,221,0.08); }
     .nav-drawer-links li:last-child { border-bottom: none; }
@@ -1479,8 +1497,9 @@
     /* ─── Floating WhatsApp button ───────────────────────────── */
     .whatsapp-float {
       position: fixed;
-      bottom: 28px;
-      right: 28px;
+      /* con viewport-fit=cover el viewport también llega bajo el home indicator */
+      bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+      right: calc(28px + env(safe-area-inset-right, 0px));
       z-index: 200;
       width: 58px;
       height: 58px;

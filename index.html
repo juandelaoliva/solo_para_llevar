@@ -129,10 +129,12 @@
     }
     body {
       font-family: var(--font-body);
-      background-color: var(--cream);
-      /* El padding-top (bajo el nav) queda transparente y deja ver el marrón de html,
-         así no asoma una franja crema entre nav y hero al hacer overscroll. */
-      background-clip: content-box;
+      /* Sin color propio. Safari iOS pinta la franja de la status bar con el "color de
+         documento" de WebKit, que mezcla el background de html con el de body: con un
+         body crema opaco, la franja salía crema aunque html fuera marrón. Todas las
+         secciones pintan su propio fondo, así que el crema de body no se veía en ningún
+         sitio; ahora el color de documento es el marrón de html. */
+      background-color: transparent;
       color: var(--ink);
       /* el nav es position:fixed (fuera del flujo) → reservamos su altura (70px)
          + la franja de la status bar / isla dinámica (viewport-fit=cover).

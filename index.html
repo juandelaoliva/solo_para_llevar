@@ -1141,76 +1141,6 @@
       display: block;
     }
 
-    /* ─── Testimonials strip ─────────────────────────────────── */
-    .testimonials-section {
-      background-color: #ede8d5;
-      padding: var(--space-lg) var(--space-md);
-      overflow: hidden;
-    }
-    .testimonials-track {
-      display: flex;
-      gap: var(--space-md);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .testimonial {
-      flex: 1;
-      min-width: 0;
-      background-color: white;
-      border-radius: 12px;
-      padding: var(--space-md);
-      border: 1px solid rgba(97,65,38,0.08);
-      box-shadow: 0 2px 12px rgba(58,40,20,0.06);
-      position: relative;
-    }
-    .testimonial::before {
-      content: '\201C';
-      font-family: Georgia, serif;
-      font-size: 4rem;
-      color: var(--gold);
-      opacity: 0.4;
-      position: absolute;
-      top: 10px;
-      left: 20px;
-      line-height: 1;
-    }
-    .testimonial-text {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--light-brown);
-      padding-top: 24px;
-      font-style: italic;
-    }
-    .testimonial-author {
-      margin-top: var(--space-sm);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .testimonial-avatar {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background-color: var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.85rem;
-      color: var(--cream);
-      flex-shrink: 0;
-    }
-    .testimonial-name {
-      font-weight: 700;
-      font-size: 0.82rem;
-      color: var(--brown);
-    }
-    .testimonial-stars {
-      font-size: 0.72rem;
-      color: var(--gold);
-      margin-top: 2px;
-    }
-
     /* ─── Contact / Location ─────────────────────────────────── */
     .contact-section {
       background-color: var(--cream);
@@ -1572,7 +1502,6 @@
       .steps-grid::before { display: none; }
       .contact-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; }
-      .testimonials-track { flex-direction: column; }
       .tortilla-feature { grid-template-columns: 1fr; }
       .tortilla-img-wrap { min-height: 260px; }
       .plato-dia-week { grid-template-columns: repeat(2, 1fr); }
@@ -1691,7 +1620,7 @@
       <div class="section-header reveal">
         <span class="section-eyebrow">Todo hecho en casa, cada día</span>
         <h2 class="section-title">Nuestra <em>Carta</em></h2>
-        <p class="section-desc">Venta por raciones. Recógelo cuando quieras — siempre recién hecho, sin conservantes, sin precocinados.</p>
+        <p class="section-desc">Recógelo cuando quieras, siempre recién hecho, sin conservantes, sin precocinados.</p>
         <div class="divider"></div>
       </div>
 
@@ -1705,16 +1634,16 @@
         <div class="tortilla-content">
           <span class="section-eyebrow" style="text-align:left; display:block;">La más pedida</span>
           <h3 class="tortilla-title">Tortilla de Patatas</h3>
-          <p class="tortilla-desc">La tortilla que todo el barrio conoce. Hecha a diario con huevo fresco y patata. Elige tú: <strong>con cebolla o sin cebolla</strong>. También la hacemos especial con chorizo y pimiento, solo por encargo.</p>
+          <p class="tortilla-desc">La tortilla que todo el barrio conoce. Hecha a diario con huevo fresco y patata. Elige tú: <strong>con cebolla o sin cebolla</strong>. También la hacemos especial con chorizo o pimiento, solo por encargo.</p>
           <div class="tortilla-variants">
             <div class="tortilla-variant">
               <span class="tortilla-variant-name">Tortilla de patatas</span>
-              <span class="tortilla-variant-note">sin cebolla o con cebolla</span>
+              <span class="tortilla-variant-note">sin cebolla o con cebolla · solo por encargo</span>
               <span class="tortilla-variant-price">9,00€</span>
             </div>
             <div class="tortilla-variant">
               <span class="tortilla-variant-name">Tortilla especial</span>
-              <span class="tortilla-variant-note">chorizo y pimiento · solo por encargo</span>
+              <span class="tortilla-variant-note">chorizo o pimiento · solo por encargo</span>
               <span class="tortilla-variant-price">10,00€</span>
             </div>
           </div>
@@ -1774,7 +1703,7 @@
         <h3 class="subsection-title">Otras <em>Especialidades</em></h3>
         <span class="subsection-note">Por ración / por Kg</span>
       </div>
-      <div class="esp-full-grid reveal">
+      <div class="esp-full-grid reveal" style="grid-template-columns: 1fr; max-width: 520px; margin-left: auto; margin-right: auto;">
         <!-- Especialidades caseras -->
         <div class="esp-panel">
           <div class="esp-panel-header">
@@ -1807,31 +1736,6 @@
               <span class="esp-item-price">5,00€</span>
             </div>
             <span class="esp-item-note">precio por ración</span>
-          </div>
-        </div>
-        <!-- Tarrinas de postre -->
-        <div class="esp-panel">
-          <div class="esp-panel-header">
-            <span class="esp-panel-title">Tarrinas de Postre</span>
-            <span class="esp-panel-note">precio tarrina</span>
-          </div>
-          <div class="esp-item">
-            <div class="esp-item-top">
-              <span class="esp-item-name">Tarta de queso</span>
-              <span class="esp-item-price">Consultar</span>
-            </div>
-          </div>
-          <div class="esp-item">
-            <div class="esp-item-top">
-              <span class="esp-item-name">Tarta tres chocolates</span>
-              <span class="esp-item-price">Consultar</span>
-            </div>
-          </div>
-          <div class="esp-item">
-            <div class="esp-item-top">
-              <span class="esp-item-name">Arroz con leche</span>
-              <span class="esp-item-price">Consultar</span>
-            </div>
           </div>
         </div>
       </div>
@@ -2112,49 +2016,6 @@
       <div class="local-photo-strip-overlay">
         <span class="local-photo-strip-label">Aquí te esperamos ✦</span>
         <span class="local-photo-strip-address">C. Atenas, 26 · Los Bermejales · 41012 Sevilla · Lunes a Sábado desde las 12:00</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ─── Testimonials ──────────────────────────────────────── -->
-  <section class="testimonials-section">
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <div class="section-header reveal" style="margin-bottom: var(--space-md);">
-        <span class="section-eyebrow">Lo que dicen los vecinos</span>
-        <h2 class="section-title">Opiniones <em>de verdad</em></h2>
-        <div class="divider"></div>
-      </div>
-      <div class="testimonials-track">
-        <div class="testimonial reveal reveal-delay-1">
-          <p class="testimonial-text">"Llevo años pidiendo el menú del mediodía. Las lentejas son las mejores del barrio, sin discusión. Y el flan… ¡de escándalo! Un sitio de los de antes."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">MJ</div>
-            <div>
-              <div class="testimonial-name">María José R.</div>
-              <div class="testimonial-stars">★★★★★</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial reveal reveal-delay-2">
-          <p class="testimonial-text">"Trabajo cerca y me lo llevo a la oficina casi todos los días. Trato de lujo, siempre puntual y la comida está buenísima. Lo recomiendo a todos mis compañeros."</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background-color: var(--blue);">AF</div>
-            <div>
-              <div class="testimonial-name">Antonio F.</div>
-              <div class="testimonial-stars">★★★★★</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial reveal reveal-delay-3">
-          <p class="testimonial-text">"Por fin comida casera de verdad para llevar en Los Bermejales. El pollo al ajillo es una delicia. Nada de cadenas ni congelados. ¡100% recomendable!"</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar" style="background-color: var(--orange);">LP</div>
-            <div>
-              <div class="testimonial-name">Laura P.</div>
-              <div class="testimonial-stars">★★★★★</div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </section>

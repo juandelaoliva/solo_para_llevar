@@ -1015,6 +1015,30 @@
     .values-section .section-title { color: var(--cream); }
     .values-section .section-desc { color: rgba(245,239,221,0.65); }
     .values-section .section-eyebrow { color: var(--gold); }
+    .stats-strip {
+      margin-top: var(--space-lg);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      text-align: center;
+      border-top: 1px solid rgba(245,239,221,0.1);
+      padding-top: var(--space-lg);
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 2.8rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      color: rgba(245,239,221,0.55);
+      margin-top: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      overflow-wrap: break-word;
+    }
 
     /* ─── How it works ───────────────────────────────────────── */
     .how-section {
@@ -1471,6 +1495,10 @@
       .tortilla-content { padding: var(--space-sm); }
       .menu-cta-banner { padding: var(--space-sm); }
       .section-title { font-size: clamp(1.7rem, 7vw, 2.8rem); }
+      .values-inner { padding-left: var(--space-sm); padding-right: var(--space-sm); }
+      .stats-strip { gap: var(--space-xs); }
+      .stat-number { font-size: 1.9rem; }
+      .stat-label { font-size: 0.65rem; letter-spacing: 0.03em; }
     }
   </style>
 </head>
@@ -1885,18 +1913,18 @@
       </div>
 
       <!-- Stats strip -->
-      <div class="reveal" style="margin-top: var(--space-lg); display: grid; grid-template-columns: repeat(3,1fr); gap: var(--space-md); text-align: center; border-top: 1px solid rgba(245,239,221,0.1); padding-top: var(--space-lg);">
+      <div class="stats-strip reveal">
         <div>
-          <div style="font-family: var(--font-display); font-weight:700; font-size: 2.8rem; color: var(--gold); line-height:1;">+10</div>
-          <div style="font-size: 0.82rem; color: rgba(245,239,221,0.55); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Años en el barrio</div>
+          <div class="stat-number">+10</div>
+          <div class="stat-label">Años en el barrio</div>
         </div>
         <div>
-          <div style="font-family: var(--font-display); font-weight:700; font-size: 2.8rem; color: var(--gold); line-height:1;">100%</div>
-          <div style="font-size: 0.82rem; color: rgba(245,239,221,0.55); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Producto fresco</div>
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Producto fresco</div>
         </div>
         <div>
-          <div style="font-family: var(--font-display); font-weight:700; font-size: 2.8rem; color: var(--gold); line-height:1;">0</div>
-          <div style="font-size: 0.82rem; color: rgba(245,239,221,0.55); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.08em;">Precocinados</div>
+          <div class="stat-number">0</div>
+          <div class="stat-label">Precocinados</div>
         </div>
       </div>
     </div>

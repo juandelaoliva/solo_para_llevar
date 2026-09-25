@@ -1015,63 +1015,6 @@
     .values-section .section-title { color: var(--cream); }
     .values-section .section-desc { color: rgba(245,239,221,0.65); }
     .values-section .section-eyebrow { color: var(--gold); }
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-md);
-      margin-top: var(--space-lg);
-    }
-    .value-card {
-      background: rgba(245,239,221,0.06);
-      border: 1px solid rgba(245,239,221,0.1);
-      border-radius: 16px;
-      padding: var(--space-md);
-      transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .value-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--orange), var(--gold));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-    .value-card:hover {
-      background: rgba(245,239,221,0.1);
-      border-color: rgba(209,163,52,0.3);
-      transform: translateY(-4px);
-    }
-    .value-card:hover::after { transform: scaleX(1); }
-    .value-icon {
-      font-size: 2.5rem;
-      margin-bottom: var(--space-sm);
-      display: block;
-    }
-    .value-card-title {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--cream);
-      margin-bottom: var(--space-xs);
-    }
-    .value-card-desc {
-      font-size: 0.88rem;
-      line-height: 1.7;
-      color: rgba(245,239,221,0.65);
-    }
-    .value-hand-note {
-      font-family: var(--font-hand);
-      font-size: 1rem;
-      color: var(--gold);
-      margin-top: var(--space-sm);
-      display: block;
-    }
 
     /* ─── How it works ───────────────────────────────────────── */
     .how-section {
@@ -1497,7 +1440,6 @@
       .hero-visual { margin-bottom: var(--space-md); }
       .hero-plate-ring { width: 300px; height: 300px; }
       .hero-logo-wrap img { width: 200px; height: 200px; }
-      .values-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
       .steps-grid::before { display: none; }
       .contact-grid { grid-template-columns: 1fr; }
@@ -1620,7 +1562,7 @@
       <div class="section-header reveal">
         <span class="section-eyebrow">Todo hecho en casa, cada día</span>
         <h2 class="section-title">Nuestra <em>Carta</em></h2>
-        <p class="section-desc">Recógelo cuando quieras, siempre recién hecho, sin conservantes, sin precocinados.</p>
+       <p class="section-desc">Recógelo cuando quieras, siempre recién hecho, sin conservantes, sin precocinados.</p>
         <div class="divider"></div>
       </div>
 
@@ -1940,27 +1882,6 @@
         <h2 class="section-title" style="color: var(--cream);">Por qué elegir <em>Solo Para Llevar</em></h2>
         <p class="section-desc" style="color: rgba(245,239,221,0.65);">Sin postureo ni marketing vacío. Solo buen producto, recetas de siempre y las ganas de que comas bien.</p>
         <div class="divider"></div>
-      </div>
-
-      <div class="values-grid">
-        <div class="value-card reveal reveal-delay-1">
-          <span class="value-icon">🤲</span>
-          <div class="value-card-title">Artesanía</div>
-          <div class="value-card-desc">Cada plato se elabora a mano desde el principio. Nada de salsas de bote ni precocinados. El sofrito se hace, el caldo se cuece, el postre se hornea.</div>
-          <span class="value-hand-note">Lo hecho a mano manda ✦</span>
-        </div>
-        <div class="value-card reveal reveal-delay-2">
-          <span class="value-icon">💬</span>
-          <div class="value-card-title">Honestidad</div>
-          <div class="value-card-desc">Sin filtros ni palabrería. Lo que ves en el menú es lo que recibes. Ingredientes de calidad, pesos correctos y precios justos. Siempre.</div>
-          <span class="value-hand-note">Sin filtros, solo buen producto ✦</span>
-        </div>
-        <div class="value-card reveal reveal-delay-3">
-          <span class="value-icon">🏘️</span>
-          <div class="value-card-title">Cercanía</div>
-          <div class="value-card-desc">Somos vecinos del barrio. Conocemos a nuestros clientes por su nombre. Ese trato de confianza, de toda la vida, es lo que nos diferencia de una cadena.</div>
-          <span class="value-hand-note">De confianza, de toda la vida ✦</span>
-        </div>
       </div>
 
       <!-- Stats strip -->
